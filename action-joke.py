@@ -3,8 +3,6 @@
 
 from hermes_python.hermes import Hermes
 import requests
-from datetime import datetime
-from pytz import timezone
 
 MQTT_IP_ADDR = "localhost"
 MQTT_PORT = 1883
