@@ -13,12 +13,12 @@ def intent_received(hermes, intent_message):
 
   if intent_message.intent.intent_name == 'amartinez35:joke':
     
-    if intent_message.slots.subject:
-      r = requests.get('https://chucknorrisfacts.fr/api/get?data=nb:1;type:txt;tri:alea')
-      joke = r.json()[0].get('fact')
-    else:
-      r = requests.get('https://blague.xyz/joke/random')
-      joke = r.json().get('joke')
+    #if intent_message.slots.subject:
+    #  r = requests.get('https://chucknorrisfacts.fr/api/get?data=nb:1;type:txt;tri:alea')
+    #  joke = r.json()[0].get('fact')
+    #else:
+    r = requests.get('https://blague.xyz/joke/random')
+    joke = r.json().get('joke')
 
     hermes.publish_end_session(intent_message.session_id, joke)
 
