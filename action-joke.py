@@ -19,11 +19,10 @@ def intent_received(hermes, intent_message):
     #  joke = r.json()[0].get('fact')
     #else:
     r = requests.get('https://blague.xyz/joke/random')
-    question = r.json().get('joke').get('question').replace('?', '    ')
-    answer = r.json().get('joke').get('answer')
-    hermes.publish_continue_session(intent_message.session_id, question)
-    time.sleep(0.5)
-    hermes.publish_end_session(intent_message.session_id, answer)
+    joke = r.json().get('joke').get('question').replace('?', '    ')
+    joke += r.json().get('joke').get('answer')
+    
+    hermes.publish_end_session(intent_message.session_id, joke)
 
 
 with Hermes(MQTT_ADDR) as h:
