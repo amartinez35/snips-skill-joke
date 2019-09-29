@@ -3,7 +3,8 @@
 
 import requests
 
-r = requests.get('https://chucknorrisfacts.fr/api/get?data=nb:1;type:txt;tri:alea')
-joke = r.json()[0].get('fact')
+r = requests.get('https://blague.xyz/joke/random')
+joke = r.json().get('joke').get('question')
+joke += r.json().get('joke').get('answer')
 
 print(joke)

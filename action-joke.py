@@ -18,7 +18,8 @@ def intent_received(hermes, intent_message):
     #  joke = r.json()[0].get('fact')
     #else:
     r = requests.get('https://blague.xyz/joke/random')
-    joke = r.json().get('joke')
+    joke = r.json().get('joke').get('question')
+    joke += r.json().get('joke').get('answer')
 
     hermes.publish_end_session(intent_message.session_id, joke)
 
